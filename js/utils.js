@@ -4361,7 +4361,7 @@ BrewUtil = {
 			case UrlUtil.PG_FEATS:
 				return ["feat"];
 			case UrlUtil.PG_COMPANIONS_FAMILIARS:
-				return ["companion", "familiar"];
+				return ["optionalfeature"];
 			case UrlUtil.PG_ANCESTRIES:
 				return ["race", "raceFluff", "subrace"];
 			case UrlUtil.PG_HAZARDS:

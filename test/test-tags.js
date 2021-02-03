@@ -341,6 +341,9 @@ class ItemDataCheck {
 		const items = require(`../data/items.json`);
 		items.item.forEach(it => this._checkRoot("data/items.json", it, it.name, it.source));
 		items.itemGroup.forEach(it => this._checkRoot("data/items.json", it, it.name, it.source));
+
+		const magicVariants = require(`../data/magicvariants.json`);
+		magicVariants.variant.forEach(va => this._checkRoot("data/magicvariants.json", va, va.name, va.source) || (va.inherits && this._checkRoot("data/magicvariants.json", va.inherits, `${va.name} (inherits)`, va.source)));
 	}
 }
 

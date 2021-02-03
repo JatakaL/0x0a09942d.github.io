@@ -585,19 +585,17 @@ class SideMenu {
 			this.board.doSaveStateDebounced();
 			this.board.$creen.trigger("panelResize");
 		});
-		const $btnLockPanels = $(`<button class="btn btn-success" title="Lock Panels"><span class="fa fa-lock-open"/></button>`).appendTo($wrpFullscreen);
+		const $btnLockPanels = $(`<button class="btn btn-danger" title="Lock Panels"><span class="glyphicon glyphicon-lock"/></button>`).appendTo($wrpFullscreen);
 		this.board.$btnLockPanels = $btnLockPanels;
 		$btnLockPanels.on("click", () => {
 			this.board.isLocked = !this.board.isLocked;
 			if (this.board.isLocked) {
 				this.board.disablePanelMoves();
 				$(`body`).addClass(`dm-screen-locked`);
-				$btnLockPanels.children(`span`).removeClass(`fa-lock-open`).addClass(`fa-lock`);
-				$btnLockPanels.addClass(`btn-danger`).removeClass(`btn-success`);
+				$btnLockPanels.removeClass(`btn-danger`).addClass(`btn-success`);
 			} else {
 				$(`body`).removeClass(`dm-screen-locked`);
-				$btnLockPanels.children(`span`).addClass(`fa-lock-open`).removeClass(`fa-lock`);
-				$btnLockPanels.removeClass(`btn-danger`).addClass(`btn-success`);
+				$btnLockPanels.addClass(`btn-danger`).removeClass(`btn-success`);
 			}
 			this.board.doSaveStateDebounced();
 		});
@@ -978,7 +976,7 @@ class Panel {
 			const fn = Renderer.hover._pageToRenderFn(page);
 
 			const $contentInner = $(`<div class="panel-content-wrapper-inner"/>`);
-			const $contentStats = $(`<div class="stats pf2-stat"/>`).appendTo($contentInner);
+			const $contentStats = $(`<table class="stats"/>`).appendTo($contentInner);
 			$contentStats.append(fn(it));
 
 			this._stats_bindCrScaleClickHandler(it, meta, $contentInner, $contentStats);
